@@ -62,9 +62,11 @@
 			left: 5vw;
 		}
 
-
 		.button {
+			background-color: {color:Content Background};
 			cursor: url(http://www.rw-designer.com/cursor-extern.php?id=52846) 2 2, vertical-text;
+			margin-right: 5%;
+			padding: 2%;
 		}
 
 		.slide {
@@ -345,9 +347,7 @@
 				$mq = $('.marquee')
 					.marquee({
 						//duration in milliseconds of the marquee
-						duration: {
-							text: Lastfm Duration
-						},
+						duration: {text: Lastfm Duration},
 						//gap in pixels between the tickers
 						gap: 50,
 						//time in milliseconds before the marquee will start animating
@@ -404,6 +404,7 @@
 		{/block:Description}
 
 		<span class="button" id="linkbutton" onclick="toggle('links')">Links</span>
+		<span class="button" id="themebutton"><a href="https://gitlab.com/ibrokemypie/tumblr-theme/raw/master/tumblr.html">Theme</a></span>
 
 	</div>
 	<div class="box slide" id="links">
