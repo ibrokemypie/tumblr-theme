@@ -1,0 +1,514 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>{block:TagPage}{Tag} | {/block:TagPage} {block:SearchPage}{lang:Search results for SearchQuery} | {/block:SearchPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{Title}</title>
+	{block:Description}
+	<meta name="description" content="{MetaDescription}" /> {/block:Description}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="{Favicon}" />
+	<link rel="alternate" type="application/rss+xml" href="{RSS}" />
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+	<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
+	<script src="https://static.tumblr.com/wgg6svp/OoTofxa0c/unnest.min.js"></script>
+
+	<meta name="color:Background" content="#F5DBD6" />
+	<meta name="color:Content Background" content="#B0C4BD" />
+	<meta name="color:Box Background" content="#C1DDE5" />
+	<meta name="text:Lastfm Width" content="11" />
+	<meta name="text:Lastfm Duration" content="8000" />
+	<meta name="text:Lastfm Username" content="" />
+	<meta name="text:Lastfm Api Key" content="" />
+
+	<style>
+		@font-face {
+			font-family: 'ohmaigosh';
+			src: url(data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAnwAA0AAAAAJMAAAAmZAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GYACCYhEICq1AoT8LgU4AATYCJAODFgQgBY44B4F9GwcdsxEWbByAEP/ByP4PCdyQAdVU/4TjGAGq2rDWGPioe3V0dfIdfId94yYEH9kEamFXHJGaCBFyJ/LUVpjW396aREUe8VI81C/d2/3/klD7NeGpEsV4Bgk2g5FxAovEI6vF6fP/f398e59z7nuXHxyAUYrTPqA2Tkbq8upMcRqP1jXtM3HE4vQAQ6SS8r8+tAHALVnC/9d9/657KRaMYEBS1YssM78P1ru+SrC3QHjiGewczeltskadMGkGbq6IKdFz+D+09q0fGL+V0njT/Hi2+79pzWZylF3orqk2tCJc6e6MQvibn8wnOzPJO3Kl5Y5SS37mDrKhNmFAIzSqVUVXpmkUQpounMdoljGtp701Om4s3lIbIyMiYOpxe70SAvh/kz3AV9v3/rMi2ATHIBHNgAwkyGjhMw6SgClCQMKlr1ABrCAAgIeup0fHUcbV+WWQnxcQQNzzC4wICiigRcAzFEHLHAds8oSBLVfWpcduArasG0/HdiKmTX0EAIgZEAAiAWnu3lCqq+psKPOivIX0DzApluMFUZIVVdMN07IRJtRxPT8olSvVWr3RbDVb7U631x8MR+PJdDZfLL3VerPd7Q/H0/lyvREYLTEuKKOuJCZe1yz/hn/ECzB7h/kHgF1AAyAJ4XiRUIpIEBkjKjXhOFQTQtVEzcmUcgSRQ6QUOcoIoxxSThA4DhlySOjUgxg5NcSBGlRa0agrcQwY2Kh/bWbVQbfE+U354uLRlxvMqYw/g/l0pbtaHfM3N/ocrboY5I3+5gO/EfraoqhzPjxUcyoKMnm3ElfDXAdusqiqiSyPPMY+avTVgtQk/n/LFCP6pk/9YB/0u0YjE3o1iTIhRcIiTnfMJPon9BdLMQy3g0nB+qJ+2GKRAxJG1sN6pWwyLp/0sJTrPabnRof5RJMx4ID16j6B9IgcwaYpxzil+oIkzKAdp7ukUUmpWEfihJCVbO8eNlQZEAbrNqApCgiGLoDefRhMb60nYQl7gOcJg+yLqCCoGgNSPBkUCrVbVAlzo4Su5I0a1yR9pqfIitAtRKlb0wmC8ICvoEbOkHCEUub0DZNxLU4GPC5lpQjPfURRXNe0p4W1kFDASx9EwS00/IARAOAWelUBLihgoQ29AaRXzOQR6wPCqJN1VwAD3V2zLIlBCLJUT4YXZEmRaLdyEHtTd2XGU09pzfA634spKuypZJrVJZw4NexBJ1NbnFEwxBghd3g004HNQ2QB0X9bv4E11B/2COwpXnJIyjUThjBIINJFKjpAUUJKuyhleYqeYGqJfepndt/rw0j9oSnH8xOUZntYXPpCsI7g8sy8lnxhsceU5HATT7HcJrc05NsPT6Ndvz0/fX96PA+f/fF4/R/Ov19tQV07hsTxTuyTZDO2ReNUZUfs70TVotipP2ufnSoXhFJvNDLgMPdK7dk6gcoh0Ma9qjXPQoDwqTXsDfRMaOauRJjlMgrZs441oaOyL4yHTppIDayyMvrZlLiUH3cOrRCzRpuAlEGslM92FTRZnXG7LPoHFusW0AE17XWxnbVjMKytqmZO2ip7rmJDY1YFXQNPjzjLSBolgq8VQ6UyNO+pEBMnSBDidTak9qZZLmG7OlIMnU13UiAwTklsjLhKzVQKF0mI7d32Me5de5wRQEWEhfsJGjRAeDSgodBB45mwghp55lGLJqqQYrVaGMTKKjWeGy6YImFJANZjlCvA4nooGQEinQKl6V2ktdAHm+6phZpKuy6MgqUkQnc7PLPKLautiz7LnNp1im1t2DsJkpK33Oy0RQCp6dJiUZZco59sicRuIkmnB3PI8piwOa5jMAvembiDs6udLxfpTfX0cOzv7rCeSwKTtlwi52BWwYBvgtYVjwDUK3XHsLKuhaWV5JsmWDJ92chrN3s27rEMS2Y1M2YnWhzCzFyS5FSlM2OvPcdeajavZa5pnV4DHIac3JRUIAzaDZAlwsFG9knV2AqS7oCNGLCm8Qb2NZ9TK8i2/BGwSpanruIulnvNCjdnDctB/7M8hbHLNOHIYMp35zzkjSGneIUw5afAlYWU3DnlhjGB5G4TQv667CRaiDZUIQVabkidl+cA6FjlpWdJ/ZaKrBfnkM5ezEhfm1/8y9dXP9++fLNP1cNYL8dwNwtecANwwUNP2uEFLkbjP9+FzubMF3AH14Crs9L/Cp4zBlyiCD22iBBcvvpvE7fCNmQWoPMCN+UoF1WVqacIXfnSYZ4iYrTPCecnTUihY1/MuoroQbu9aZtfZYl9MiCNphjjDkpaB895CJZ4qt3mRZvXvGr2izdSrOAzIQ7yucPxiS+syQN8TcnzfN2W/Mk3dJatfNOB8pxvOVin+Lb9jTz4wPbmHsUaAHfwj1OLPi4aXOBqm8fcbPCVOx0hvNISW3jtMk9z73D858GK7OfRGbnBkx+8J3/z7GyRF+fLvMFk7eO1Wjfo0AwrF1B8JXSkxTjLqJiyoZz+FEQgGAIPSYvH2ZdbUxm5jWv13o5DATRfgtT4+lrBB/o1IYHShQ+wJCiVGJGDT+B/GoAuLVXylHIV5opVj3ibsPI+r6i5xDqtBgvRDAIjHBy6IeQKgeEjEWZB4Kn/y8FWU7rl8qizAirc2URwAt+eixr0qRLq8wzgjvJT0YZGMpDakiJKYp9PxNBAguq3Af3tZvDGA/GmwlV9b4Bzb+Rr8/TDpkFC+xDpu5WMDzbbwXy+aEC+rgCn6gpsmyTgeWHxfI0qrKv6WZuvzXMspwr8qQau3ASw3XjGMQ+MD6KANiqBWFm880DJhzvravAXk+Z//DGcqZYqrPmtPuMeeiqe9CJNPHHhs0IxyknBFd/SnYsifAHCDXpaNSrQaeE+6O5S4gfEBWjJia606ycBdUiYxN4m1FLuqqDN5W47mh8bh7RKOmXCBJ1RlLShrgK0prR3FuB1sf7rttIvK146n+acZ+zqLqZ/31Nm2xZtXa9ia8+g7imnuG4CjFAo0Y6HbliOB3aoeHuKHh7ZbSmfvdPMQXi60n+acPvC3VjnwSbHcpdayAbotp3a8PVe6K1CMJFAWniRP8HwWbkCutD8Te4ss2seGwUOXojcuQnUH7eA14Zs9xfGt/lO/UWvfLd3ix/ywI3gAM8AAADvqNHREjwlFfqCgVW88EjTjygrGjRqEhYRFROXkJSSlpGVk1dQxGBxeAKRRKZQaXQGk8WGYATlcHl8gZKyiqqauoamhqaWto6unr6BoZGxiamZuYUlz8p67cPa2tk7ODo5u7i6IX78+vI9U7E1/mvoQhq8INQF) format('woff2'),
+			url(data:application/font-woff;charset=utf-8;base64,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) format('woff'),
+			url('https://dl.dropboxusercontent.com/s/uahc3r97ptyvo4n/ohmaigosh.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		html {
+			cursor: url(https://img03.deviantart.net/34ac/i/2010/140/e/e/toast_normal__free_cursor_by_thedeathofsen.gif) 2 2, pointer;
+			line-height: 1;
+		}
+
+		body {
+			font-family: ohmaigosh;
+			background-color: {color:Background};
+			font-size: 4vmin;
+
+		}
+
+		.box {
+			position: fixed;
+			min-width: 10vh;
+			max-width: 20vw;
+			min-height: 35vmin;
+			background-color: {color:Box Background};
+			padding: 1%;
+			top: 5vw;
+			left: 5vw;
+		}
+
+
+		.button {
+			cursor: url(http://www.rw-designer.com/cursor-extern.php?id=52846) 2 2, vertical-text;
+		}
+
+		.slide {
+			background-color: {color:Content Background};
+			vertical-align: middle;
+			overflow-y: hidden;
+			z-index: -1;
+			transition-property: all;
+			transition-duration: .5s;
+			transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+			display: none;
+		}
+
+		.show {
+			transform: translateY(+100%);
+		}
+
+		#posts {
+			position: absolute;
+			right: 0;
+			top: 5vw;
+			padding-bottom: 5vw;
+			width: 65vw;
+			z-index: -1;
+			word-wrap: break-word;
+		}
+
+		.gutter-sizer {
+			width: 4%;
+		}
+
+		.grid-sizer {
+			width: 40%;
+		}
+
+		.posted {
+			background-color: {color:Content Background};
+			padding: 1%;
+			width: 40%;
+			margin-bottom: 2%;
+		}
+
+		.pagination {
+			width: 84%;
+		}
+
+		.post * {
+			width: 100%;
+		}
+
+		a {
+			color: black;
+			text-decoration: none;
+		}
+
+		.tags {
+			padding: 0% 2%;
+		}
+
+		.buttons>* {
+			float: right;
+			display: inline-block !important;
+			padding-right: 2%;
+		}
+
+		.date>* {
+			float: left;
+			display: inline-block !important;
+			padding-left: 2%;
+		}
+
+
+		#np {
+			position: fixed;
+			bottom: 0;
+			width: 100vw;
+			background-color: #B0C4BD;
+			text-align: center;
+			line-height: normal;
+			height: 4vh
+		}
+
+		.marquee {
+			width: {text:Lastfm Width}vw;
+			overflow: hidden;
+			display: inline-block;
+		}
+
+
+		.svg-icon {
+			display: inline-flex;
+			align-self: center;
+		}
+
+		.svg-icon svg,
+		.svg-icon img {
+			height: 1em;
+			width: 1em;
+		}
+
+		.svg-icon.svg-baseline svg {
+			top: .125em;
+			position: relative;
+		}
+
+		#loader {
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			display: none;
+		}
+
+		#loader img {
+			margin: 0;
+			position: absolute;
+			top: 46vh;
+			left: 50vw;
+			transform: translate(-50%, -50%);
+			width: 10vmin;
+			height: 10vmin;
+		}
+
+		.blog_name:nth-child(2n+3) {
+			background-color: white;
+			width: 103%;
+			display: inherit;
+			padding-left: 2%;
+			transform: translateX(-2.5%);
+		}
+
+	</style>
+	<script>
+		$(window)
+			.resize(function () {
+				if (this.resizeTO) clearTimeout(this.resizeTO);
+				this.resizeTO = setTimeout(function () {
+					$(this)
+						.trigger('resizeEnd');
+				}, 500);
+			});
+
+		function reblogs() {
+
+			// Linear reblog format
+			var $blockquoteRoots = $("blockquote")
+				.not(function () {
+					return $(this)
+						.parent()
+						.is("blockquote");
+				});
+
+			$blockquoteRoots.parent()
+				.each(function () {
+					var $content = $(this);
+					if (unroll($content, $content)) {
+						var $last = $content.children()
+							.not("[data-moved]")
+							.filter("p, figure");
+					}
+				});
+
+			function unroll($content, $blockquote) {
+				var $reblogName = $blockquote.children("p")
+					.first();
+				if ($reblogName.is("p")) {
+					var $tumblrBlog = $reblogName.children()
+						.first();
+					var $reblogContent = $reblogName.next();
+					if ($tumblrBlog.is(".tumblr_blog") && $reblogContent.is("blockquote")) {
+						$reblogName.attr("data-moved", "true");
+						unroll($content, $reblogContent);
+						var $innerContent = $reblogContent.contents();
+						$innerContent.unwrap();
+						var div = $('<div class="blog_name"></div>');
+						$reblogName.appendTo(div);
+						$innerContent.appendTo(div);
+						div.appendTo($content);
+						$innerContent.attr("data-moved", "true");
+						return true;
+					}
+				}
+			}
+
+			// Display avatars
+			//$(".tumblr_blog").each(function () {
+			//var a = this;
+			//var blogUrl = this.href.split("/")[2];
+			//$(a).prepend("<img class='reblog-avatar' src='https://api.tumblr.com/v2/blog/" + blogUrl + "/avatar' />");
+			//});
+
+		}
+		$(function () {
+			reblogs();
+			var $grid = $('#posts')
+				.masonry({
+					// options
+					itemSelector: '.posted',
+					columnWidth: '.grid-sizer',
+					containerStyle: null,
+					percentPosition: true,
+					gutter: '.gutter-sizer',
+					percentPosition: true
+				});
+			$grid.imagesLoaded()
+				.progress(function () {
+					$grid.masonry('layout');
+				});
+			var msnry = $grid.data('masonry');
+
+			$('#posts')
+				.infiniteScroll({
+					// options
+					path: '.pagination__next',
+					append: '.posted',
+					history: false,
+					outlayer: msnry,
+				});
+			$('#posts')
+				.on('request.infiniteScroll', function (event, path) {
+					$('#loader')
+						.show();
+				});
+			$('#posts')
+				.on('append.infiniteScroll', function (event, response, path, items) {
+					$('#loader')
+						.hide();
+					reblogs();
+					$grid.masonry('layout')
+				});
+
+
+			function tumblrNotesInserted() {
+				$grid.masonry('layout')
+			};
+		});
+
+		function toggle(id) {
+			//$("#" + id).height($("#info").height()/100*70);
+			$("#" + id)
+				.show();
+			$("#" + id)
+				.width($("#info")
+					.width());
+			if ($("#" + id)
+				.css("transform") == "none" || $("#" + id)
+				.css("transform") == "matrix(1, 0, 0, 1, 0, 0)") {
+				$("#" + id)
+					.css({
+						"transform": "translateY(+" + $("#info")
+							.height() + "px)"
+					});
+			} else {
+				$("#" + id)
+					.height($("#info")
+						.height());
+				$("#" + id)
+					.css({
+						"transform": "translateY(0px)"
+					});
+			}
+		}
+		$(window)
+			.on('resizeEnd', function () {
+				$grid.masonry('layout')
+			});
+
+	</script>
+
+	{block:IfLastfmUsername} {block:IfLastfmApiKey}
+	<script>
+		$(function () {
+			var oldata;
+			var $mq;
+
+			function makemarquee() {
+				$('.marquee')
+					.html("<a href=\"" + url + "\">" + track + " - " + artist + " [" + album + "]</a>");
+				$mq = $('.marquee')
+					.marquee({
+						//duration in milliseconds of the marquee
+						duration: {
+							text: Lastfm Duration
+						},
+						//gap in pixels between the tickers
+						gap: 50,
+						//time in milliseconds before the marquee will start animating
+						delayBeforeStart: 0,
+						//'left' or 'right'
+						direction: 'left',
+						//true or false - should the marquee be duplicated to show an effect of continues flow
+						duplicated: false
+					});
+			}
+
+
+			setInterval(function () {
+				jQuery.getJSON("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&format=json&user={text:Lastfm Username}&api_key={text:Lastfm Api Key}&limit=1&extended=0&nowplaying=true", function (data) {
+					if (oldata === undefined || data.recenttracks.track[0].name != oldata.recenttracks.track[0].name) {
+						oldata = data;
+						artist = data.recenttracks.track[0].artist["#text"];
+						album = data.recenttracks.track[0].album["#text"];
+						track = data.recenttracks.track[0].name;
+						url = data.recenttracks.track[0].url;
+						console.log($mq);
+						if ($mq != undefined) {
+							$mq.bind('finished', function () {
+								// clearInterval($flash);
+								console.log('destroy');
+								$mq.marquee('destroy');
+								makemarquee();
+							});
+						} else {
+							makemarquee();
+						}
+						// var $flash = setInterval(function() {
+						//     $('.marquee').marquee('toggle');
+						// }, 1000);
+					}
+				});
+			}, 5000);
+		});
+
+	</script>
+	{/block:IfLastfmApiKey} {/block:IfLastfmUsername}
+</head>
+
+<body>
+	<div id="loader">
+		<img src="https://i.giphy.com/media/l4FGIO2vCfJkakBtC/source.gif">
+	</div>
+	<div id="info" class="box">
+		<a href="{BlogURL}">
+			<h1>{Title}</h1>
+		</a>
+		{block:Description}
+		<p id="description">{Description}</p>
+		{/block:Description}
+
+		<span class="button" id="linkbutton" onclick="toggle('links')">Links</span>
+
+	</div>
+	<div class="box slide" id="links">
+		<p><a href="https://steamcommunity.com/id/ibrokemypie">Steam</a></p>
+		<p><a href="https://www.last.fm/user/ibrokemypie">Last.Fm</a></p>
+		<span><a href="https://fendox.tumblr.com">fen <div class="svg-icon svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" version="1" viewBox="0 0 52 45">
+						<path id="polygon4" d="M54 35h-8v-7H31v7h8v8h-8v-8h-7v15h7v8h8v7h7v8h8v-8h7v-7h8v-8h7V35h-7v-7H54z" transform="translate(-24 -27)" />
+					</svg>
+
+
+				</div></a></span>
+		<p><a href="https://transfonter.org/">Font tool</a></p>
+	</div>
+	<div id="posts">
+		<div class="grid-sizer"></div>
+		<div class="gutter-sizer"></div>
+		{block:Posts}
+		<div class="posted">
+			{block:Text}
+			<div class="post text">
+				{block:Title}
+				<h3><a href="{Permalink}">{Title}</a></h3> {/block:Title}{Body}
+			</div>
+			{/block:Text}{block:Photo}
+			<div class="post photo">
+				<img src="{PhotoURL-500}" alt="{PhotoAlt}" /> {block:caption}
+				<div class="caption">{Caption}</div>
+				{/block:Caption}
+			</div>
+			{/block:Photo}{block:Panorama}
+			<div class="post panorama">
+				{LinkOpenTag}
+				<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" /> {LinkCloseTag}{block:Caption}
+				<div class="caption">{Caption}</div>
+				{/block:Caption}
+			</div>
+			{/block:Panorama}{block:Photoset}
+			<div class="post photoset">
+				{Photoset-500}{block:Caption}
+				<div class="caption">{Caption}</div>
+				{/block:Caption}
+			</div>
+			{/block:Photoset}{block:Quote}
+			<div class="post quote">
+				"{Quote}" {block:Source}
+				<div class="source">{Source}</div>
+				{/block:Source}
+			</div>
+			{/block:Quote}{block:Link}
+			<div class="post link">
+				<a href="{URL}" class="link" {Target}>{Name}</a> {block:Description}
+				<div class="description">{Description}</div>
+				{/block:Description}
+			</div>
+			{/block:Link}{block:Chat}
+			<div class="post chat">
+				{block:Title}
+				<h3><a href="{Permalink}">{Title}</a></h3> {/block:Title}
+				<ul class="chat">
+					{block:Lines}
+					<div class="{Alt} user_{UserNumber}">
+						{block:Label}
+						<span class="label">{Label}</span> {/block:Label}{Line}
+					</div>
+					{/block:Lines}
+				</ul>
+			</div>
+			{/block:Chat}{block:Video}
+			<div class="post video">
+				{Video-500}{block:Caption}
+				<div class="caption">{Caption}</div>
+				{/block:Caption}
+			</div>
+			{/block:Video}{block:Audio}
+			<div class="post audio">
+				{AudioEmbed}{block:Caption}
+				<div class="caption">{Caption}</div>
+				{/block:Caption}
+			</div>
+			{/block:Audio} {PostNotes}
+			<div class="tags">
+				{block:Tags}
+				<a href="{TagURL}">#{Tag}</a> {/block:Tags}
+			</div>
+			{block:Date}
+			<div class="date">
+				<a href="{Permalink}">{TimeAgo}</a>
+			</div>{/block:Date}
+			<div class="buttons"><a href="{Permalink}"><span>{NoteCount}</span> </a> {ReblogButton color="black" size="20"} {LikeButton color="black" size="20"} </div>
+		</div>
+		{/block:Posts}
+
+		<!-- pagination has path -->
+		<p class="pagination">
+			{block:Pagination} {block:NextPage}
+			<a class="pagination__next" href="{NextPage}"></a> {/block:NextPage} {/block:Pagination}
+		</p>
+	</div>
+	{block:IfLastfmUsername} {block:IfLastfmApiKey}
+	<footer>
+		<div id="np">
+			<div class="marquee">&nbsp;</div>
+		</div>
+	</footer>
+	{/block:IfLastfmApiKey} {/block:IfLastfmUsername}
+</body>
+
+</html>
