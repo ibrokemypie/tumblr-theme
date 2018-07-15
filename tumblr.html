@@ -196,6 +196,22 @@
 			padding-left: 2%;
 			transform: translateX(-2.5%);
 		}
+		
+        .reblog, .like, .svg-like {
+            width: 1em;
+            height: 1em;
+        }
+        
+        .svg-like {
+            transform: translateY(-1.25em);
+            pointer-events: none;
+        }
+        
+        .like_button * {
+            width: 1em !important;
+            height: 1em !important;
+            opacity: 0 !important;
+        }
 
 	</style>
 	<script>
@@ -409,11 +425,7 @@
 	<div class="box slide" id="links">
 		<p><a href="https://steamcommunity.com/id/ibrokemypie">Steam</a></p>
 		<p><a href="https://www.last.fm/user/ibrokemypie">Last.Fm</a></p>
-		<span><a href="https://fendox.tumblr.com">fen <div class="svg-icon svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" version="1" viewBox="0 0 52 45">
-						<path id="polygon4" d="M54 35h-8v-7H31v7h8v8h-8v-8h-7v15h7v8h8v7h7v8h8v-8h7v-7h8v-8h7V35h-7v-7H54z" transform="translate(-24 -27)" />
-					</svg>
-
-
+		<span><a href="https://fendox.tumblr.com">fen <div class="svg-icon svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" version="1" viewBox="0 0 52 45"><path id="polygon4" d="M54 35h-8v-7H31v7h8v8h-8v-8h-7v15h7v8h8v7h7v8h8v-8h7v-7h8v-8h7V35h-7v-7H54z" transform="translate(-24 -27)" /></svg>
 				</div></a></span>
 		<p><a href="https://transfonter.org/">Font tool</a></p>
 	</div>
@@ -492,7 +504,9 @@
 			<div class="date">
 				<a href="{Permalink}">{TimeAgo}</a>
 			</div>{/block:Date}
-			<div class="buttons"><a href="{Permalink}"><span>{NoteCount}</span> </a> {ReblogButton color="black" size="20"} {LikeButton color="black" size="20"} </div>
+			<div class="buttons"><a href="{Permalink}"><span>{NoteCount}</span> </a> <a href="{ReblogURL}" target="_blank" class="reblog"> <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" viewBox="0 -1 20 20">
+  <path stroke="#000" d="M3 3h13M2 4h15M2 5h16M2 6h3M2 7h3m11 0h1M2 8h3m10 0h3M0 9h7m7 0h5M1 10h5m7 0h7M2 11h3m10 0h3M3 12h1m11 0h3m-3 1h3M2 14h16M3 15h15M4 16h13"/>
+</svg></a> <span class="like">{LikeButton color="black" size="20"} <svg xmlns="http://www.w3.org/2000/svg" class="svg-like" version="1" viewBox="0 0 52 45"><path id="polygon4" d="M54 35h-8v-7H31v7h8v8h-8v-8h-7v15h7v8h8v7h7v8h8v-8h7v-7h8v-8h7V35h-7v-7H54z" transform="translate(-24 -27)" /></svg></span> </div>
 		</div>
 		{/block:Posts}
 
