@@ -29,6 +29,8 @@
 	<meta name="color:Content Background" content="#B0C4BD" />
 	<meta name="color:Button Background" content="#B0C4BD" />
 	<meta name="color:Box Background" content="#C1DDE5" />
+	<meta name="color:Text" content="#000000" />
+	<meta name="color:Links" content="#000000" />
 	<meta name="text:Lastfm Width" content="11" />
 	<meta name="text:Lastfm Duration" content="8000" />
 	<meta name="text:Lastfm Username" content="" />
@@ -60,6 +62,7 @@
 			font-family: ohmaigosh;
 			font-size: 4vmin;
 			{/block:IfInbuiltfont}
+			color: {color:Text};
 			background-color: {color:Background};
 
 		}
@@ -139,7 +142,7 @@
 		}
 
 		a {
-			color: black;
+			color: {color:Links};
 			text-decoration: none;
 		}
 
