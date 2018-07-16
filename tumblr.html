@@ -326,6 +326,7 @@
         $(document).click(function(event) { 
             if(!$(event.target).closest('.slide,.button').length) {
                 if ($('.slide').css("transform") != "none") {
+                    console.log('ye');
                     $(".slide").height($("#info").height());
                     $(".slide").css({"transform": "translateY(0px)"});
                 }
@@ -351,7 +352,7 @@
 				$("#" + id)
 					.height($("#info")
 						.height());
-				$("#" + id)
+				$(".slide")
 					.css({
 						"transform": "translateY(0px)"
 					});
@@ -428,15 +429,19 @@
 		{/block:Description}
 
 		<span class="button" id="linkbutton" onclick="toggle('links')">Links</span>
+		<span class="button" id="askbutton" onclick="toggle('ask')">Ask</span>	
 		<span class="button" id="themebutton"><a href="https://gitlab.com/ibrokemypie/tumblr-theme/raw/master/tumblr.html">Theme</a></span>
 
 	</div>
 	<div class="box slide" id="links">
 		<p><a href="https://steamcommunity.com/id/ibrokemypie">Steam</a></p>
 		<p><a href="https://www.last.fm/user/ibrokemypie">Last.Fm</a></p>
-		<span><a href="https://fendox.tumblr.com">fen <div class="svg-icon svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" version="1" viewBox="0 0 52 45"><path id="polygon4" d="M54 35h-8v-7H31v7h8v8h-8v-8h-7v15h7v8h8v7h7v8h8v-8h7v-7h8v-8h7V35h-7v-7H54z" transform="translate(-24 -27)" /></svg>
-				</div></a></span>
+		<span><a href="https://fendox.tumblr.com">fen <div class="svg-icon svg-baseline"><svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" version="1" viewBox="0 0 52 45"><path id="polygon4" d="M54 35h-8v-7H31v7h8v8h-8v-8h-7v15h7v8h8v7h7v8h8v-8h7v-7h8v-8h7V35h-7v-7H54z" transform="translate(-24 -27)" /></svg></div></a></span>
 		<p><a href="https://transfonter.org/">Font tool</a></p>
+	</div>
+	<div class="box slide" id="ask">
+	    <p><iframe frameborder="0" height="100%" id="ask_form" scrolling="no" src="https://www.tumblr.com/ask_form/ibrokemypie.co.vu" width="100%" style="background-color: transparent;"></iframe></p>
+<!--[if IE]><script type="text/javascript">document.getElementById('ask_form').allowTransparency=true;</script><![endif]-->
 	</div>
 	<div id="posts">
 		<div class="grid-sizer"></div>
