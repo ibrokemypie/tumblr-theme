@@ -323,6 +323,15 @@
 			};
 		});
 
+        $(document).click(function(event) { 
+            if(!$(event.target).closest('.slide,.button').length) {
+                if ($('.slide').css("transform") != "none") {
+                    $(".slide").height($("#info").height());
+                    $(".slide").css({"transform": "translateY(0px)"});
+                }
+            }        
+        });
+
 		function toggle(id) {
 			//$("#" + id).height($("#info").height()/100*70);
 			$("#" + id)
