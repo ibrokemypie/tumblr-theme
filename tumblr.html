@@ -39,6 +39,9 @@
 	<meta name="color:Box Background" content="#C1DDE5" />
 	<meta name="color:Text" content="#000000" />
 	<meta name="color:Links" content="#000000" />
+	<meta name="color:Button Text" content="#000000" />
+	<meta name="color:Like Button" content="#000000" />
+	<meta name="color:Reblog Button" content="#000000" />
 	<meta name="text:Lastfm Width" content="11" />
 	<meta name="text:Lastfm Duration" content="8000" />
 	<meta name="text:Lastfm Username" content="" />
@@ -57,6 +60,11 @@
 			color: {color:Text};
 			background-color: {color:Background};
 
+		}
+		
+		a {
+			color: {color:Links};
+			text-decoration: none;
 		}
 
 		.box {
@@ -86,6 +94,11 @@
 			cursor: url(http://www.rw-designer.com/cursor-extern.php?id=52846) 2 2, vertical-text;
 			margin-right: 5%;
 			padding: 2%;
+			color: {color:Button Text};
+		}
+		
+		#themelink {
+			color: {color:Button Text};		    
 		}
 
 		.slide {
@@ -134,11 +147,6 @@
 
 		.post * {
 			width: 100%;
-		}
-
-		a {
-			color: {color:Links};
-			text-decoration: none;
 		}
 
 		.tags {
@@ -224,6 +232,11 @@
         .svg-like {
             transform: translateY(-1.25em);
             pointer-events: none;
+            fill: {color:Like Button};
+        }
+        
+        .svg-reblog {
+            fill: {color:Reblog Button};
         }
         
         .like_button * {
@@ -457,7 +470,7 @@
         <div id="buttons">
     		<span class="button" id="linkbutton" onclick="toggle('links')">Links</span>
     		<span class="button" id="askbutton" onclick="toggle('ask')">Ask</span>	
-    		<span class="button" id="themebutton"><a href="https://gitlab.com/ibrokemypie/tumblr-theme/raw/master/tumblr.html">Theme</a></span>
+    		<span class="button" id="themebutton"><a id="themelink" href="https://gitlab.com/ibrokemypie/tumblr-theme/raw/master/tumblr.html">Theme</a></span>
 		</div>
 
 	</div>
@@ -546,7 +559,7 @@
 			<div class="date">
 				<a href="{Permalink}">{TimeAgo}</a>
 			</div>{/block:Date}
-			<div class="buttons"><a href="{Permalink}"><span>{NoteCount}</span> </a> <a href="{ReblogURL}" target="_blank" class="reblog-button"> <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" viewBox="0 -1 20 20">
+			<div class="buttons"><a href="{Permalink}"><span>{NoteCount}</span> </a> <a href="{ReblogURL}" target="_blank" class="reblog-button"> <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" viewBox="0 -1 20 20" class="svg-reblog">
   <path stroke="#000" d="M3 3h13M2 4h15M2 5h16M2 6h3M2 7h3m11 0h1M2 8h3m10 0h3M0 9h7m7 0h5M1 10h5m7 0h7M2 11h3m10 0h3M3 12h1m11 0h3m-3 1h3M2 14h16M3 15h15M4 16h13"/>
 </svg></a> <span class="like-frame">{LikeButton color="black" size="20"} <svg xmlns="http://www.w3.org/2000/svg" class="svg-like" version="1" viewBox="0 0 52 45"><path id="polygon4" d="M54 35h-8v-7H31v7h8v8h-8v-8h-7v15h7v8h8v7h7v8h8v-8h7v-7h8v-8h7V35h-7v-7H54z" transform="translate(-24 -27)" /></svg></span> </div>
 		</div>
