@@ -22,6 +22,7 @@
 	<script src="https://static.tumblr.com/wgg6svp/OoTofxa0c/unnest.min.js"></script>
 
     <meta name="if:Inbuilt font" content="1"/>
+    <meta name="if:Center Buttons" content="0"/>
     <meta name="font:Body" content="Arial, Helvetica, sans-serif"/>
     <meta name="text:Body Font Size" content="24px"/>
     <meta name="text:Title Font Size" content="32px"/>
@@ -84,6 +85,12 @@
 		    font-weight: {TitleFontWeight};
 		    {/block:IfNotInbuiltfont}
 		}
+		
+		{block:IfCenterButtons}
+		#buttons {
+		    text-align: center;
+		}
+		{/block:IfCenterButtons}
 
 		.button {
 			background-color: {color:Button Background};
@@ -458,9 +465,11 @@
 		<p id="description">{Description}</p>
 		{/block:Description}
 
-		<span class="button" id="linkbutton" onclick="toggle('links')">Links</span>
-		<span class="button" id="askbutton" onclick="toggle('ask')">Ask</span>	
-		<span class="button" id="themebutton"><a href="https://gitlab.com/ibrokemypie/tumblr-theme/raw/master/tumblr.html">Theme</a></span>
+        <div id="buttons">
+    		<span class="button" id="linkbutton" onclick="toggle('links')">Links</span>
+    		<span class="button" id="askbutton" onclick="toggle('ask')">Ask</span>	
+    		<span class="button" id="themebutton"><a href="https://gitlab.com/ibrokemypie/tumblr-theme/raw/master/tumblr.html">Theme</a></span>
+		</div>
 
 	</div>
 	<div class="box slide" id="links">
