@@ -24,7 +24,7 @@
     <meta name="if:Center Buttons" content="0"/>
     <meta name="font:Body" content="Arial, Helvetica, sans-serif"/>
     <meta name="text:Body Font Size" content="4vmin"/>
-    <meta name="text:Title Font Size" content="8vminx"/>
+    <meta name="text:Title Font Size" content="2em"/>
     <meta name="text:Link1 Title" content="custom link"/>
     <meta name="text:Link1 URL" content="/link1"/>
     <meta name="text:Link2 Title" content=""/>
@@ -469,7 +469,9 @@
 
         <div id="buttons">
     		<span class="button" id="linkbutton" onclick="toggle('links')">Links</span>
-    		<span class="button" id="askbutton" onclick="toggle('ask')">Ask</span>	
+    		{block:AskEnabled}
+    		<span class="button" id="askbutton" onclick="toggle('ask')">{AskLabel}</span>	
+    		{/block:AskEnabled}
     		<span class="button" id="themebutton"><a id="themelink" href="https://gitlab.com/ibrokemypie/tumblr-theme/raw/master/tumblr.html">Theme</a></span>
 		</div>
 
@@ -480,10 +482,12 @@
 		<p><a href="{text:Link3 URL}">{text:Link3 Title}</a></p>
 		<p><a href="{text:Link4 URL}">{text:Link4 Title}</a></p>
 	</div>
+	{block:AskEnabled}
 	<div class="box slide" id="ask">
-	    <p><iframe frameborder="0" height="100%" id="ask_form" scrolling="no" src="https://www.tumblr.com/ask_form/ibrokemypie.co.vu" width="100%" style="background-color: transparent;"></iframe></p>
+	    <p><iframe frameborder="0" height="100%" id="ask_form" scrolling="no" src="https://www.tumblr.com/ask_form/{Host}" width="100%" style="background-color: transparent;"></iframe></p>
 <!--[if IE]><script type="text/javascript">document.getElementById('ask_form').allowTransparency=true;</script><![endif]-->
 	</div>
+	{/block:AskEnabled}
 	<div id="posts">
 		<div class="grid-sizer"></div>
 		<div class="gutter-sizer"></div>
